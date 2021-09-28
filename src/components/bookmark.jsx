@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Bookmark = ({ id, statusBookmark, onBookmark }) => {
+const Bookmark = ({ statusBookmark, id, onBookmark }) => {
   const fillPath = (fillStatus) => {
-    if (fillStatus == true) {
+    if (fillStatus === true) {
       console.log("fillstatus");
       return "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z";
     } else {
@@ -17,13 +18,19 @@ const Bookmark = ({ id, statusBookmark, onBookmark }) => {
         width="16"
         height="16"
         fill="currentColor"
-        class="bi bi-heart"
+        className="bi bi-heart"
         viewBox="0 0 16 16"
       >
-        <path fill-rule="evenodd" d={fillPath(statusBookmark)} />
+        <path fillRule="evenodd" d={fillPath(statusBookmark)} />
       </svg>
     </div>
   );
+};
+
+Bookmark.propTypes = {
+  statusBookmark: PropTypes.bool.isRequired,
+  onBookmark: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default Bookmark;
